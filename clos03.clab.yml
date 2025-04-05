@@ -2,19 +2,24 @@
 name: clos03vjunos
 
 topology:
+  defaults:
+    kind: juniper_vjunosswitch
+    env:
+      QEMU_SMP: 6
+      QEMU_MEMORY: 8192
+
   kinds:
     juniper_vjunosswitch:
       image: vrnetlab/juniper_vjunos-switch:24.4R1.9
     linux:
       image: ghcr.io/hellt/network-multitool
+
   nodes:
 
     leaf1:
-      kind: juniper_vjunosswitch
       startup-config: configs/leaf1.cfg
 
     leaf2:
-      kind: juniper_vjunosswitch
       startup-config: configs/leaf2.cfg
       stages:
         create:
@@ -23,7 +28,6 @@ topology:
               stage: healthy
 
     leaf3:
-      kind: juniper_vjunosswitch
       startup-config: configs/leaf3.cfg
       stages:
         create:
@@ -32,7 +36,6 @@ topology:
               stage: healthy
 
     spine1:
-      kind: juniper_vjunosswitch
       startup-config: configs/spine1.cfg
       stages:
         create:
@@ -41,7 +44,6 @@ topology:
               stage: healthy
 
     spine2:
-      kind: juniper_vjunosswitch
       startup-config: configs/spine2.cfg
       stages:
         create:
