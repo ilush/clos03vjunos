@@ -8,15 +8,28 @@ topology:
     linux:
       image: ghcr.io/hellt/network-multitool
   nodes:
+
     leaf1:
       kind: juniper_vjunosswitch
       startup-config: configs/leaf1.cfg
+
     leaf2:
       kind: juniper_vjunosswitch
       startup-config: configs/leaf2.cfg
+      stages:
+        create:
+          wait-for:
+            - node: leaf1
+              stage: healthy
+
     leaf3:
       kind: juniper_vjunosswitch
       startup-config: configs/leaf3.cfg
+      stages:
+        create:
+          wait-for:
+            - node: leaf2
+              stage: healthy
 
     spine1:
       kind: juniper_vjunosswitch
@@ -24,10 +37,6 @@ topology:
       stages:
         create:
           wait-for:
-            - node: leaf1
-              stage: healthy
-            - node: leaf2
-              stage: healthy
             - node: leaf3
               stage: healthy
 
@@ -37,11 +46,7 @@ topology:
       stages:
         create:
           wait-for:
-            - node: leaf1
-              stage: healthy
-            - node: leaf2
-              stage: healthy
-            - node: leaf3
+            - node: spine1
               stage: healthy
 
     client11:
