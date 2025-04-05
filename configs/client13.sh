@@ -1,16 +1,3 @@
 #!/bin/bash
 
-cat > /etc/network/interfaces << EOF
-auto eth1
-
-iface eth1 inet static
-  address 10.1.13.13
-  netmask 255.255.255.0
-
-iface eth1 inet6 static
-  address 1000:10:0:0::29
-  netmask 127
-  pre-up echo 0 > /proc/sys/net/ipv6/conf/eth1/accept_ra
-EOF
-
-ifup eth1
+ip a add 10.1.13.13/24 dev eth1

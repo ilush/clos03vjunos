@@ -23,7 +23,7 @@ topology:
       startup-config: configs/spine1.cfg
     spine2:
       kind: juniper_vjunosswitch
-      startup-config: configs/spine1.cfg
+      startup-config: configs/spine2.cfg
 
     client11:
       kind: linux
