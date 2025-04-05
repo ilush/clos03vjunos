@@ -32,12 +32,12 @@ topology:
 
   links:
 
-    - endpoints: ["leaf1:eth1", "spine1:eth1"]
-    - endpoints: ["leaf1:eth2", "spine2:eth1"]
-    - endpoints: ["leaf2:eth1", "spine1:eth2"]
-    - endpoints: ["leaf2:eth2", "spine2:eth2"]
-    - endpoints: ["leaf3:eth1", "spine1:eth3"]
-    - endpoints: ["leaf3:eth2", "spine2:eth3"]
+    - endpoints: ["leaf1:ge-0/0/1", "spine1:ge-0/0/1"]
+    - endpoints: ["leaf1:ge-0/0/2", "spine2:ge-0/0/1"]
+    - endpoints: ["leaf2:ge-0/0/1", "spine1:ge-0/0/2"]
+    - endpoints: ["leaf2:ge-0/0/2", "spine2:ge-0/0/2"]
+    - endpoints: ["leaf3:ge-0/0/1", "spine1:ge-0/0/3"]
+    - endpoints: ["leaf3:ge-0/0/2", "spine2:ge-0/0/3"]
 
-    - endpoints: ["client11:eth1", "leaf1:eth4"]
-    - endpoints: ["client13:eth1", "leaf3:eth4"]
+    - endpoints: ["client11:eth1", "leaf1:ge-0/0/4"]
+    - endpoints: ["client13:eth1", "leaf3:ge-0/0/4"]
