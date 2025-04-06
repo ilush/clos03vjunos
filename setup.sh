@@ -15,8 +15,8 @@ CFG_DIR=./configs
 # }
 
 configure_CLIENT() {
-  docker cp $CFG_DIR/$1.sh clab-clos02-$1:/tmp/
-  docker exec clab-clos02-$1 bash /tmp/$1.sh 2>/dev/null
+  docker cp $CFG_DIR/$1.sh clab-clos03-$1:/tmp/
+  docker exec clab-clos03-$1 bash /tmp/$1.sh 2>/dev/null
 }
 
 echo
