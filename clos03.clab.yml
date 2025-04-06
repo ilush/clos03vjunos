@@ -4,13 +4,13 @@ name: clos03vjunos
 topology:
   defaults:
     kind: juniper_vjunosswitch
-    env:
-      QEMU_SMP: 6
-      QEMU_MEMORY: 8192
+    # env:
+    #   QEMU_SMP: 6
+    #   QEMU_MEMORY: 8192
 
   kinds:
     juniper_vjunosswitch:
-      image: vrnetlab/juniper_vjunos-switch:24.4R1.9
+      image: vrnetlab/juniper_vjunos-switch:23.2R1.14
     linux:
       image: ghcr.io/hellt/network-multitool
 
@@ -21,35 +21,35 @@ topology:
 
     leaf2:
       startup-config: configs/leaf2.cfg
-      stages:
-        create:
-          wait-for:
-            - node: leaf1
-              stage: healthy
+      # stages:
+      #   create:
+      #     wait-for:
+      #       - node: leaf1
+      #         stage: healthy
 
     leaf3:
       startup-config: configs/leaf3.cfg
-      stages:
-        create:
-          wait-for:
-            - node: leaf2
-              stage: healthy
+      # stages:
+      #   create:
+      #     wait-for:
+      #       - node: leaf2
+      #         stage: healthy
 
     spine1:
       startup-config: configs/spine1.cfg
-      stages:
-        create:
-          wait-for:
-            - node: leaf3
-              stage: healthy
+      # stages:
+      #   create:
+      #     wait-for:
+      #       - node: leaf3
+      #         stage: healthy
 
     spine2:
       startup-config: configs/spine2.cfg
-      stages:
-        create:
-          wait-for:
-            - node: spine1
-              stage: healthy
+      # stages:
+      #   create:
+      #     wait-for:
+      #       - node: spine1
+      #         stage: healthy
 
     client11:
       kind: linux
